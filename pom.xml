@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.codelair.trial</groupId>
+    <artifactId>jaxrs-in-war-in-ear</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name> ::: Jax-RS Application Liberty in EAR ::: </name>
+    <description>Simple REST application packaged as a war in a ear.. nothing too fancy</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>jaxrs-in-war</module>
+        <module>jaxrs-in-war-2</module>
+        <module>war-in-ear</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <packagingExcludes>pom.xml</packagingExcludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <defaultLibBundleDir>lib/</defaultLibBundleDir>
+                    <skinnyWars>true</skinnyWars>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+</project>
